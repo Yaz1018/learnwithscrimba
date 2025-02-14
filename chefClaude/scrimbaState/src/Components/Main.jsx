@@ -1,54 +1,46 @@
-﻿// export default function Main() {
-//   return (
-//     <main>
-//       <form className="add-ingredient-form">
-//         <input
-//           type="text"
-//           placeholder="e.g. oregano"
-//           aria-label="Add ingredient"
-//         />
-//         <button>Add ingredient</button>
-//       </form>
-//     </main>
-//   );
-// }
+﻿import React from "react";
+import Recipe from "./Recipe";
+import AddIng from "./AddIng";
+
 export default function Main() {
-  const ingredients = ["Chicken", "Oregano", "Tomatoes"]
+  /**
+   * 2. Move the list of ingredients <section> into its
+   *    own IngredientsList component.
+   *
+   * While you're considering how to structure things, consider
+   * where state is, think about if it makes sense or not to
+   * move it somewhere else, how you'll communicate between
+   * the parent/child components, etc.
+   *
+   * The app should function as it currently does when you're
+   * done, so there will likely be some extra work to be done
+   * beyond what I've listed above.
+   */
+  // const [ingredients, setIngredients] = React.useState([
+  //   "all the main spices",
+  //   "pasta",
+  //   "ground beef",
+  //   "tomato paste",
+  // ]);
+  // const [recipeShown, setRecipeShown] = React.useState(false);
 
-  const ingElement = ingredients.map((x) => <li key={x} className="ingredientLi">{x}</li>)
-  
-    /**
-     * Challenge:
-     * Add the new ingredient to the array of ingredients. Also, add a 
-     * console.log(ingredients) after adding the ingredient, because 
-     * **warning**: you aren't going to see the page update!
-     * 
-     * Hint: this is a one-liner solution, so don't overthink it 😅
-     */
+  // const ingredientsListItems = ingredients.map((ingredient) => (
+  //   <li key={ingredient}>{ingredient}</li>
+  // ));
 
-    function handleSubmit(event) {
-      event.preventDefault()
-      const formData = new FormData(event.currentTarget)
-      const newIngredient = formData.get("ingredient")
-      ingredients.push(newIngredient)
-      console.log(ingredients)
-      
-  }
-  
+  // function addIngredient(formData) {
+  //   const newIngredient = formData.get("ingredient");
+  //   setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+  // }
+
+  // function getRecipeClick() {
+  //   setRecipeShown((prev) => !prev);
+  // }
+
   return (
-      <main>
-          <form onSubmit={handleSubmit} className="add-ingredient-form">
-              <input 
-                  type="text"
-                  placeholder="e.g. oregano"
-                  aria-label="Add ingredient"
-                  name="ingredient"
-              />
-              <button>Add ingredient</button>
-          </form>
-          <ul>
-              {ingElement}
-          </ul>
-      </main>
-  )
+    <main>
+      {/* <AddIng /> */}
+      <Recipe />
+    </main>
+  );
 }
